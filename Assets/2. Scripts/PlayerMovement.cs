@@ -8,11 +8,6 @@ public class PlayerMovement : MonoBehaviour
     private float z = 0;
 
     public float Speed = 5;
-    
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
