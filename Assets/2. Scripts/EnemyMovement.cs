@@ -12,10 +12,18 @@ public class EnemyMovement : MonoBehaviour
     {
         enemy = GetComponent<Enemy>();
         agent = GetComponent<NavMeshAgent>();
+
+        agent.destination = enemy.Player.transform.position;
     }
 
     void Update()
     {
-        agent.destination = enemy.Player.transform.position;
+        if(agent.destination != Vector3.zero)
+        {
+            if(Vector3.Distance(transform.position, agent.destination) < 4)
+            {
+                agent.destination = enemy.Player.transform.position;
+            }
+        }
     }
 }
