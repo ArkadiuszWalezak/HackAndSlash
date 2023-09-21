@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
 
     public void Hit(float value)
     {
+        
         healthSystem.Hit(value);
     }
 }

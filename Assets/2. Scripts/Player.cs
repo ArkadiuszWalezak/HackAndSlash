@@ -8,10 +8,12 @@ public class Player : MonoBehaviour
     public float range = 5;
     private Player player;
     private HealthSystem healthSystem;
+    private HealthBar healthBar;
 
     void Start()
     {
         healthSystem = GetComponent<HealthSystem>();
+        healthBar = GetComponent<HealthBar>();
     }
 
     void Update()
@@ -27,10 +29,12 @@ public class Player : MonoBehaviour
                 }
             }
         }
+        healthBar = GetComponent<HealthBar>();
     }
 
     public void Hit(float value)
     {
+
         healthSystem.Hit(value);
     }
 }

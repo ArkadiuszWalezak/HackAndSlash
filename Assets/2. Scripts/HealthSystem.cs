@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
-    private float health;
+    public float Health { get => health;}
+    private float health = 100;
 
     void Start()
     {
