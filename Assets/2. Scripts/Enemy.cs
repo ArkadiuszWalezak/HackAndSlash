@@ -6,13 +6,21 @@ public class Enemy : MonoBehaviour
 {
     private Player player;
     public Player Player { get { return player; } }
-
     private HealthSystem healthSystem;
+    private KillsCounter killsCounter;
 
     void Start()
     {
         player = FindObjectOfType<Player>();
         healthSystem = GetComponent<HealthSystem>();
+        killsCounter = GameObject.Find("KCO").GetComponent<KillsCounter>();
+
+        healthSystem.OnDead += DestroyGameObject;
+    }
+
+    private void OnDestroy()
+    {
+        healthSystem.OnDead -= DestroyGameObject;
     }
 
     void Update()
@@ -22,7 +30,12 @@ public class Enemy : MonoBehaviour
 
     public void Hit(float value)
     {
-        
         healthSystem.Hit(value);
+    }
+
+    public void DestroyGameObject()
+    {
+        Destroy(gameObject);
+        killsCounter.AddKill();
     }
 }
